@@ -19,7 +19,7 @@ public class GPTTestPrompt {
     private final ChatLanguageModel chatModel = OpenAiChatModel.builder()
                 .apiKey(apiKey)
                 .modelName(OpenAiChatModelName.GPT_4_O_MINI)
-                //.modelName("o1-preview")
+
                 .build();
 
     @Test
@@ -44,7 +44,7 @@ public class GPTTestPrompt {
 
     @Test
     void visionChat() {
-        String imageUrl = "https://commondatastorage.googleapis.com/codeskulptor-demos/riceracer_assets/img/car_3.png";
+        String imageUrl = "https://www.gstatic.com/webp/gallery/1.sm.webp";
         Response<AiMessage> response = chatModel.generate(
                 UserMessage.from(
                         ImageContent.from(imageUrl),
@@ -53,4 +53,5 @@ public class GPTTestPrompt {
         );
         System.out.println(response.content().text());
     }
+
 }
