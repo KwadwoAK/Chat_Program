@@ -63,8 +63,9 @@ To access the GPT-4o model with your API you will need to add some funds to your
 ![](https://i.postimg.cc/sgW54nzw/Billing-1.jpg)
 
 ## Using the Chat Program 
-#Using Java Swing
+# Using Java Swing
 -Go to the `src` folder and run the `ChatMain.Java` file. This will start the Java Swing user interface and you can start interacting with the GPT-4o model.
+# Using Terminal
 Go to the `src` folder and run the `Main.java` file. This will start the program, and you can start interacting with the GPT-4o model through the terminal.
 
 ## Future Updates
