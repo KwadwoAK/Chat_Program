@@ -37,7 +37,9 @@ public class Main {
                 System.out.println("Enter your message: ");
                 String message = sc.nextLine();
                 GPT gpt = new GPT();
-                gpt.chatWithString(message);
+                String text = gpt.chatWithString(message);
+                System.out.println(text);
+
             } else {
                 System.out.println("You have selected Vision Chat Model");
                 System.out.println("Please enter a valid image URL, either a png or jpg or webp file example(https://example.com/image.png: ");
@@ -50,7 +52,8 @@ public class Main {
                     imageUrl = sc.nextLine();
                 }
                 GPT gpt = new GPT();
-                gpt.visionChat(imageUrl);
+                String response =gpt.visionChat(imageUrl);
+                System.out.println(response);
             }
             System.out.println("Do you want to play again? Enter 0 to play again or any other number to exit: ");
             while (!sc.hasNextInt()) {

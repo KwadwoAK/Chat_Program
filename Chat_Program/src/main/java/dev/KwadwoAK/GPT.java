@@ -73,24 +73,25 @@ public class GPT {
      *
      * @param message the input text message.
      */
-    public void chatWithString(String message) {
-        String answer = chatModel.generate(message);
-        System.out.println(answer);
+    public String chatWithString(String message) {
+        return chatModel.generate(message);
 
     }
+
+
     /**
      * Generates a response from the chat model using an image URL describing the contents of the image.
      * OpenAI vision chat can only take png, jpg, or webp images so images will be validated before sending.
      * @param imageUrl the URL of the image to analyze.
      */
-    public void visionChat(String imageUrl) {
+    public String visionChat(String imageUrl) {
         Response<AiMessage> response = chatModel.generate(
                 UserMessage.from(
                         ImageContent.from(imageUrl),
                         TextContent.from("What do you see?")
                 )
         );
-        System.out.println(response.content().text());
+        return response.content().text();
     }
 }
 
