@@ -33,6 +33,7 @@ public class ChatFrame extends JFrame implements ActionListener {
         chatButton.setHorizontalTextPosition(JButton.CENTER);
         chatButton.addActionListener(this);
 
+
         //Vision Button
         visionButton.setBounds(700, 400, 200, 200);
         visionButton.setFont(new Font(null, Font.BOLD, 18));
