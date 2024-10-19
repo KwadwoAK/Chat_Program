@@ -11,7 +11,7 @@ import static dev.langchain4j.model.anthropic.AnthropicChatModelName.CLAUDE_3_5_
 
 public class Anthropic {
     private final String APIKEY = System.getenv("ANTHROPIC_API_KEY");
-    private final String MODEL_ENDPOINT = "https://api.anthropic.com/v1/models";
+    //private final String MODEL_ENDPOINT = "https://api.anthropic.com/v1/models";
 
     AnthropicChatModel model = AnthropicChatModel.builder()
             .apiKey(APIKEY)
@@ -23,9 +23,9 @@ public class Anthropic {
         return model.generate(message);
     }
 
-    public String visionChat(String imageUrl) {
+    public String visionChat(String base64) {
         Response<AiMessage> response = model.generate(
-                UserMessage.from(ImageContent.from(imageUrl),
+                UserMessage.from(ImageContent.from(base64),
                         TextContent.from("What do you see in this image?")
                 )
         );
