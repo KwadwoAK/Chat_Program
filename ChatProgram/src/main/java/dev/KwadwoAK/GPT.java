@@ -3,15 +3,18 @@ package dev.KwadwoAK;
 import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import dev.langchain4j.data.image.Image;
 import dev.langchain4j.data.message.AiMessage;
 import dev.langchain4j.data.message.ImageContent;
 import dev.langchain4j.data.message.TextContent;
 import dev.langchain4j.data.message.UserMessage;
 import dev.langchain4j.model.chat.ChatLanguageModel;
-import dev.langchain4j.model.chat.response.ChatResponse;
 import dev.langchain4j.model.openai.OpenAiChatModel;
 import dev.langchain4j.model.openai.OpenAiChatModelName;
+import dev.langchain4j.model.openai.OpenAiImageModel;
+import dev.langchain4j.model.openai.OpenAiImageModelName;
 import dev.langchain4j.model.output.Response;
+
 
 import java.net.URI;
 import java.net.http.HttpClient;
@@ -22,9 +25,15 @@ import java.util.List;
 public class GPT {
     private final static String MODEL_ENDPOINT = "https://api.openai.com/v1/models";
     private final static String APIKEY = System.getenv("OPENAI_API_KEY");
+
     private final ChatLanguageModel chatModel = OpenAiChatModel.builder()
             .apiKey(APIKEY)
             .modelName(OpenAiChatModelName.GPT_4_O_MINI)
+            .build();
+
+    private final OpenAiImageModel imageModel = OpenAiImageModel.builder()
+            .apiKey(APIKEY)
+            .modelName(OpenAiImageModelName.DALL_E_3)
             .build();
 
     public record Model(String id, Long created) {
@@ -92,6 +101,11 @@ public class GPT {
                 )
         );
         return response.content().text();
+    }
+
+    public URI ImageGeneration(String prompt) {
+        Response<Image> response = imageModel.generate(prompt);
+        return response.content().url();
     }
 }
 

@@ -9,6 +9,7 @@ import java.net.http.HttpResponse;
 import java.util.Base64;
 
 public class ImageToBase64 {
+    // Downloads an image from a URL and converts it to a Base64 string representation
     public static String DownloadImageAndConvertToBase64(String imageUrl) throws IOException, InterruptedException {
         try (var client = HttpClient.newHttpClient()) {
             var request = HttpRequest.newBuilder()

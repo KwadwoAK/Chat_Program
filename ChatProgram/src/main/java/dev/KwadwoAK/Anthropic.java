@@ -11,7 +11,6 @@ import static dev.langchain4j.model.anthropic.AnthropicChatModelName.CLAUDE_3_5_
 
 public class Anthropic {
     private final String APIKEY = System.getenv("ANTHROPIC_API_KEY");
-    //private final String MODEL_ENDPOINT = "https://api.anthropic.com/v1/models";
 
     AnthropicChatModel model = AnthropicChatModel.builder()
             .apiKey(APIKEY)

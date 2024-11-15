@@ -1,4 +1,5 @@
 
+import dev.langchain4j.data.image.Image;
 import dev.langchain4j.data.message.AiMessage;
 import dev.langchain4j.data.message.ImageContent;
 import dev.langchain4j.data.message.TextContent;
@@ -8,6 +9,8 @@ import dev.langchain4j.model.chat.request.ChatRequest;
 import dev.langchain4j.model.chat.response.ChatResponse;
 import dev.langchain4j.model.openai.OpenAiChatModel;
 import dev.langchain4j.model.openai.OpenAiChatModelName;
+import dev.langchain4j.model.openai.OpenAiImageModel;
+import dev.langchain4j.model.openai.OpenAiImageModelName;
 import dev.langchain4j.model.output.Response;
 import org.junit.jupiter.api.Test;
 
@@ -20,6 +23,11 @@ public class GPTTestPrompt {
             .apiKey(apiKey)
             .modelName(OpenAiChatModelName.GPT_4_O_MINI)
 
+            .build();
+
+    private final OpenAiImageModel imageModel = OpenAiImageModel.builder()
+            .apiKey(apiKey)
+            .modelName(OpenAiImageModelName.DALL_E_3)
             .build();
 
     @Test
@@ -52,6 +60,12 @@ public class GPTTestPrompt {
                 )
         );
         System.out.println(response.content().text());
+    }
+
+    @Test
+    void ImageGeneration() {
+        Response<Image> response = imageModel.generate("a picture of a cat");
+              System.out.println(response.content().url());
     }
 
 }

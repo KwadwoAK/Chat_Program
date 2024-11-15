@@ -35,7 +35,7 @@ public class AnthropicTestPrompt {
         String base64 = ImageToBase64.DownloadImageAndConvertToBase64(imageUrl);
         Response<AiMessage> response = model.generate(
                 UserMessage.from(
-                        ImageContent.from(base64, "image/png/jpeg/webp"),
+                        ImageContent.from(base64, "image/png"),
                         TextContent.from("What do you see?")
                 )
         );

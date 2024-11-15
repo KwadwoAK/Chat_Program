@@ -9,9 +9,9 @@ public class ChatFrame extends JFrame implements ActionListener {
     JButton chatButton = new JButton("Chat Model");
     JButton visionButton = new JButton("Vision Model");
     JLabel introLabel = new JLabel("Welcome to the Chat Program please select a model to use ");
-    ImageIcon chatIcon = new ImageIcon("images/chat.png");
+    ImageIcon chatIcon = new ImageIcon("images/chats.png");
     ImageIcon chatIconScaled = new ImageIcon(chatIcon.getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT));
-    ImageIcon visionIcon = new ImageIcon("images/vision.png");
+    ImageIcon visionIcon = new ImageIcon("images/visions.png");
     ImageIcon visionIconScaled = new ImageIcon(visionIcon.getImage().getScaledInstance(150, 100, Image.SCALE_DEFAULT));
     ImageIcon aiIcon = new ImageIcon("images/ai.png");
 
